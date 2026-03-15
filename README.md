@@ -16,15 +16,27 @@ Käytettävissä olevat endpointit:
 
 
 ## Product (`/product`)
-| Metodi | Endpoint              | Kuvaus                |
+| Metodi | Endpointti            | Kuvaus                     |
 |--------|-----------------------|----------------------------|
-| GET    | /product              | List all products          |
-| GET    | /product/{id}         | Get product by ID          |
-| POST   | /product              | Create a new product       |
-| PUT    | /product/{id}         | Update a product by ID     |
-| DELETE | /product/{id}         | Delete a product by ID     |
+| GET    | /product              | Näytä kaikki tuotteet      |
+| GET    | /product/{id}         | Hae tuote ID:n perusteella |
+| POST   | /product              | Lisää uusi tuote           |
+| PUT    | /product/{id}         | Päivitä tuote ID:n avulla  |
+| DELETE | /product/{id}         | Poists tuote ID:n avulla   |
 
 ---
+
+## Order (`/order`)
+| Methodi | Endpointti                     | Kuvaus                             |
+|--------|---------------------------------|------------------------------------|
+| GET    | /order/                         | Näytä kaikki tilaukset             |
+| GET    | /order/{id}                     | Hae tilaus ID:n perusteella        |
+| POST   | /order/post                     | Luo uusi tilaus                    |
+| PUT    | /order/{id}                     | Päivitä tilaus ID:n avulla         |
+| DELETE | /order/{id}                     | Poista tilaus ID:n avulla          |
+| GET    | /order/by-customer/{customerId} | Hae tilaukset asiakkaan ID:n avulla|
+| DELETE | /order/clearcancelled           | Poista kaikki peruutetut tilaukset |
+| PATCH  | /order/{id}/status              | Päivitä tilauksen status tilaa     |
   
 
 
@@ -34,4 +46,4 @@ Koodi on refaktoroitu paketteihin:
 * Controller
 * Repositories
 * Service
-* Base
+* DTO
