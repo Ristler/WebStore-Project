@@ -4,19 +4,8 @@ Sovellus käyttää Spring Web- ja Spring Data JPA -kirjastoja.
 
 Käytettävissä olevat endpointit:
 
-- ASIAKKAAN HALLINTA -
-* GET localhost:8080/customer (Hakee kaikki asiakkaat)
-* GET localhost:8080/customer/{id} (Hakee tietyn asiakkaan)
-
-- TILAUKSEN HALLINTA -
-* POST localhost:8080/order/post (Hakee tiet)
-
-* GET localhost:8080/order (Hakee kaikki tilaukset)
-* GET localhost:8080/order/{id} (Hakee tietyn tilauksen)
-
-
-## Product (`/product`)
-| Metodi | Endpointti            | Kuvaus                     |
+## Tuote (`/product`)
+| Metodi | Polku            | Kuvaus                     |
 |--------|-----------------------|----------------------------|
 | GET    | /product              | Näytä kaikki tuotteet      |
 | GET    | /product/{id}         | Hae tuote ID:n perusteella |
@@ -26,8 +15,8 @@ Käytettävissä olevat endpointit:
 
 ---
 
-## Order (`/order`)
-| Methodi | Endpointti                     | Kuvaus                             |
+## Tilaus (`/order`)
+| Methodi | Polku                     | Kuvaus                             |
 |--------|---------------------------------|------------------------------------|
 | GET    | /order/                         | Näytä kaikki tilaukset             |
 | GET    | /order/{id}                     | Hae tilaus ID:n perusteella        |
@@ -39,7 +28,28 @@ Käytettävissä olevat endpointit:
 | PATCH  | /order/{id}/status              | Päivitä tilauksen status tilaa     |
   
 
+## Asiakas (`/customer`)
+| Metodi | Polku                | Kuvaus                              |
+|--------|----------------------|-------------------------------------|
+| GET    | /customer            | Listaa kaikki asiakkaat             |
+| GET    | /customer/{id}       | Hae asiakas ID:llä                  |
+| POST   | /customer            | Luo asiakas ja osoite               |
+| PUT    | /customer/{id}       | Päivitä asiakas ID:llä              |
+| DELETE | /customer/{id}       | Poista asiakas ID:llä               |
 
+---
+
+## Asiakasosoitteet (`/customeraddresses`)
+| Metodi | Polku                                         | Kuvaus                              |
+|--------|-----------------------------------------------|-------------------------------------|
+| POST   | /customeraddresses                            | Luo osoite asiakkaalle              |
+| PUT    | /customeraddresses/{id}                       | Päivitä osoite osoitteen ID:llä     |
+| DELETE | /customeraddresses/{id}                       | Poista osoite osoitteen ID:llä      |
+| GET    | /customeraddresses/{id}                       | Hae osoite osoitteen ID:llä         |
+| GET    | /customeraddresses/by-customer/{customerId}   | Hae osoite asiakkaan ID:llä         |
+| PUT    | /customeraddresses/by-customer/{customerId}   | Päivitä osoite asiakkaan ID:llä     |
+
+---
 
 Koodi on refaktoroitu paketteihin:
 * Entity
