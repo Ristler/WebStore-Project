@@ -51,6 +51,13 @@ Käytettävissä olevat endpointit:
 
 ---
 
+## Toimittaja (`/supplier`)
+| Metodi | Polku                | Kuvaus                              |
+|--------|----------------------|-------------------------------------|
+| GET    | /supplier            | Listaa kaikki toimittajat           |
+| GET    | /supplier/{id}       | Hae toimittaja ID:llä               |
+| POST   | /supplier            | Luo toimittaja ja osoite            |
+
 Koodi on refaktoroitu paketteihin:
 * Entity
 * Controller
