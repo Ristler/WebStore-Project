@@ -174,7 +174,7 @@ Käytettävissä olevat endpointit:
 }
 ```
 
-### POST /order/post
+### POST /order
 
 **Pyyntö:**
 ```json
@@ -268,10 +268,7 @@ Käytettävissä olevat endpointit:
 ```json
 {}
 ```
-**Vastaus:**
-```json
-{}
-```
+
 
 ### DELETE /order/clearcancelled
 
