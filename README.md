@@ -134,8 +134,135 @@ Käytettävissä olevat endpointit:
   "supplier_id": 1
 }
 ```
+## Tilaus
 
-### DELETE /product/{id}
+### GET /order/
+
+**Pyyntö:**
+```json
+{}
+```
+**Vastaus:**
+```json
+[
+  {
+    "id": 1,
+    "customerId": 1,
+    "orderDate": "2026-03-15T12:00:00",
+    "deliveryDate": "2026-03-18T12:00:00",
+    "shippingAddressId": 1,
+    "status": "NEW"
+  }
+]
+```
+
+### GET /order/{id}
+
+**Pyyntö:**
+```json
+{}
+```
+**Vastaus:**
+```json
+{
+  "id": 1,
+  "customerId": 1,
+  "orderDate": "2026-03-15T12:00:00",
+  "deliveryDate": "2026-03-18T12:00:00",
+  "shippingAddressId": 1,
+  "status": "NEW"
+}
+```
+
+### POST /order/post
+
+**Pyyntö:**
+```json
+{
+  "customerId": 1,
+  "orderDate": "2026-03-15T12:00:00",
+  "deliveryDate": "2026-03-18T12:00:00",
+  "shippingAddressId": 1,
+  "status": "NEW"
+}
+```
+**Vastaus:**
+```json
+{
+  "id": 1,
+  "customerId": 1,
+  "orderDate": "2026-03-15T12:00:00",
+  "deliveryDate": "2026-03-18T12:00:00",
+  "shippingAddressId": 1,
+  "status": "NEW"
+}
+```
+
+### PUT /order/{id}
+
+**Pyyntö:**
+```json
+{
+  "customerId": 1,
+  "orderDate": "2026-03-15T12:00:00",
+  "deliveryDate": "2026-03-20T12:00:00",
+  "shippingAddressId": 1,
+  "status": "PROCESSING"
+}
+```
+**Vastaus:**
+```json
+{
+  "id": 1,
+  "customerId": 1,
+  "orderDate": "2026-03-15T12:00:00",
+  "deliveryDate": "2026-03-20T12:00:00",
+  "shippingAddressId": 1,
+  "status": "PROCESSING"
+}
+```
+
+### PATCH /order/{id}/status
+
+**Pyyntö:**
+```json
+{
+  "status": "CANCELLED"
+}
+```
+**Vastaus:**
+```json
+{
+  "id": 1,
+  "customerId": 1,
+  "orderDate": "2026-03-15T12:00:00",
+  "deliveryDate": "2026-03-20T12:00:00",
+  "shippingAddressId": 1,
+  "status": "CANCELLED"
+}
+```
+
+### GET /order/by-customer/{customerId}
+
+**Pyyntö:**
+```json
+{}
+```
+**Vastaus:**
+```json
+[
+  {
+    "id": 1,
+    "customerId": 1,
+    "orderDate": "2026-03-15T12:00:00",
+    "deliveryDate": "2026-03-18T12:00:00",
+    "shippingAddressId": 1,
+    "status": "NEW"
+  }
+]
+```
+
+### DELETE /order/{id}
 
 **Pyyntö:**
 ```json
@@ -145,6 +272,19 @@ Käytettävissä olevat endpointit:
 ```json
 {}
 ```
+
+### DELETE /order/clearcancelled
+
+**Pyyntö:**
+```json
+{}
+```
+**Vastaus:**
+```json
+"1 cancelled orders deleted, 2 order items deleted"
+```
+
+
 ## Asiakas
 #### Luo uusi asiakas (POST /customer)
 
