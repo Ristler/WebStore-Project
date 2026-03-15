@@ -1,9 +1,9 @@
 Sovellus on tarkoitettu verkkokaupan ylläpitäjille.
 Sovellus käyttää Spring Web- ja Spring Data JPA -kirjastoja.
 
-Tietokannassa on toteutettu tapahtuma mikä tarkistaa joka päivä tuotteiden varastosaldoa. Jos saldo on 0, niin tuote lisätään "outofstock" tauluun. Tämän taulun on helppo siivota käyttämällä endpointtia. Tämä endpointti on toteutettu massaoperaatiota käyttäen. 
-Kun uusi tilaus tehdään, tilauslokiin tallennetaan tietoja tilauksesta. Tämä on toteutettu käyttäen liipaisinta.
+Tietokannassa on toteutettu tapahtuma mikä tarkistaa joka päivä tuotteiden varastosaldoa. Jos saldo on 0, niin tuote lisätään "outofstock" tauluun. Tämän taulun on helppo siivota käyttämällä endpointtia. Tämä endpointti on toteutettu massaoperaatiota käyttäen.
 
+Tietokantaan on myös toteutettu liipaisin joka lisää "orderlog" tauluun lokitietoja uusista tilauksista.
 
 
 
