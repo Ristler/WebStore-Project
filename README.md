@@ -13,6 +13,18 @@ Käytettävissä olevat endpointit:
 
 * GET localhost:8080/order (Hakee kaikki tilaukset)
 * GET localhost:8080/order/{id} (Hakee tietyn tilauksen)
+
+
+## Product (`/product`)
+| Metodi | Endpoint              | Kuvaus                |
+|--------|-----------------------|----------------------------|
+| GET    | /product              | List all products          |
+| GET    | /product/{id}         | Get product by ID          |
+| POST   | /product              | Create a new product       |
+| PUT    | /product/{id}         | Update a product by ID     |
+| DELETE | /product/{id}         | Delete a product by ID     |
+
+---
   
 
 
