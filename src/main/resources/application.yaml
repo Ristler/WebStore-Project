@@ -11,4 +11,4 @@ spring:
   datasource:
     url: jdbc:mariadb://localhost:3306/projekti
     username: admin
-    password: adminpass
+    password: xxxxx
