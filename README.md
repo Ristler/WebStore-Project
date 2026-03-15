@@ -6,7 +6,7 @@ Tietokannassa on toteutettu tapahtuma mikä tarkistaa joka päivä tuotteiden va
 Tietokantaan on myös toteutettu liipaisin joka lisää "orderlog" tauluun lokitietoja uusista tilauksista.
 Tietokannan käyttäjiä on luotu rajaamaan oikeuksia. Varmuuskopiointisuunnitelma sekä toimintasuunnitelma on tehty.
 
-
+Projekti on toteutettu aika pitkälti tunneilla käydyn tehtävien perusteella. Ainoa asia minkä olen muuttanut olen poistanut "contact_info" taulun kokonaan. Eli asiakkaan ja toimittajan tiedot tulee hankkia customer ja suppliers taulujen kautta. Tämä customer_info taulu luotiin oppimispäiväkirja nro 12:ssa. Muuten tietokanta on täysin sama. 
 
 Käytettävissä olevat endpointit:
 
