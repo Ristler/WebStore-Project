@@ -83,7 +83,69 @@ Käytettävissä olevat endpointit:
   }
 ]
 ```
+### POST /product
 
+**Pyyntö:**
+```json
+{
+  "name": "Puhelin",
+  "description": "Älypuhelin",
+  "price": 499.99,
+  "stock_quantity": 10,
+  "category_id": 2,
+  "supplier_id": 1
+}
+```
+**Vastaus:**
+```json
+{
+  "id": 1,
+  "name": "Puhelin",
+  "description": "Älypuhelin",
+  "price": 499.99,
+  "stock_quantity": 10,
+  "category_id": 2,
+  "supplier_id": 1
+}
+```
+
+### PUT /product/{id}
+
+**Pyyntö:**
+```json
+{
+  "name": "Puhelin Pro",
+  "description": "Päivitetty malli",
+  "price": 599.99,
+  "stock_quantity": 8,
+  "category_id": 2,
+  "supplier_id": 1
+}
+```
+**Vastaus:**
+```json
+{
+  "id": 1,
+  "name": "Puhelin Pro",
+  "description": "Päivitetty malli",
+  "price": 599.99,
+  "stock_quantity": 8,
+  "category_id": 2,
+  "supplier_id": 1
+}
+```
+
+### DELETE /product/{id}
+
+**Pyyntö:**
+```json
+{}
+```
+**Vastaus:**
+```json
+{}
+```
+## Asiakas
 #### Luo uusi asiakas (POST /customer)
 
 **Pyyntö:**
