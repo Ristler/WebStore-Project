@@ -61,6 +61,29 @@ Käytettävissä olevat endpointit:
 
 ### Esimerkkejä JSON-pyynnöistä ja -vastauksista
 
+## Product
+
+### GET /product
+
+**Pyyntö:**
+```json
+{}
+```
+**Vastaus:**
+```json
+[
+  {
+    "id": 1,
+    "name": "Puhelin",
+    "description": "Älypuhelin",
+    "price": 499.99,
+    "stock_quantity": 10,
+    "category_id": 2,
+    "supplier_id": 1
+  }
+]
+```
+
 #### Luo uusi asiakas (POST /customer)
 
 **Pyyntö:**
