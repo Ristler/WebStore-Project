@@ -753,6 +753,79 @@ Käytettävissä olevat endpointit:
     }
 [
 ```
+## Tilauslokit
+
+### GET /orderlogs
+
+**Pyyntö:**
+```json
+{}
+```
+**Vastaus:**
+```json
+[
+  {
+    "id": 1,
+    "orderId": 10,
+    "customerId": 5,
+    "loggedAt": "2026-03-15T12:00:00"
+  }
+]
+```
+
+### GET /orderlogs/{id}
+
+**Pyyntö:**
+```json
+{}
+```
+**Vastaus:**
+```json
+{
+  "id": 1,
+  "orderId": 10,
+  "customerId": 5,
+  "loggedAt": "2026-03-15T12:00:00"
+}
+```
+
+### GET /orderlogs/by-order/{orderId}
+
+**Pyyntö:**
+```json
+{}
+```
+**Vastaus:**
+```json
+[
+  {
+    "id": 1,
+    "orderId": 10,
+    "customerId": 5,
+    "loggedAt": "2026-03-15T12:00:00"
+  }
+]
+```
+
+### GET /orderlogs/by-customer/{customerId}
+
+**Pyyntö:**
+```json
+{}
+```
+**Vastaus:**
+```json
+[
+  {
+    "id": 1,
+    "orderId": 10,
+    "customerId": 5,
+    "loggedAt": "2026-03-15T12:00:00"
+  }
+]
+```
+
+---
 
 
 
