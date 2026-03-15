@@ -58,6 +58,23 @@ Käytettävissä olevat endpointit:
 | GET    | /supplier/{id}       | Hae toimittaja ID:llä               |
 | POST   | /supplier            | Luo toimittaja ja osoite            |
 
+### Esimerkkejä JSON-pyynnöistä ja -vastauksista
+
+#### Luo uusi asiakas (POST /customer)
+
+**Pyyntö:**
+```json
+{
+  "firstName": "Matti",
+  "lastName": "Meikäläinen",
+  "phone": "0401234567",
+  "email": "matti.meikalainen@example.com",
+  "streetAddress": "Katu 1",
+  "postalCode": "00100",
+  "city": "Helsinki",
+  "country": "Suomi"
+}
+
 Koodi on refaktoroitu paketteihin:
 * Entity
 * Controller
