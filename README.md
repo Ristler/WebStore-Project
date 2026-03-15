@@ -37,8 +37,16 @@ Käytettävissä olevat endpointit:
 | GET    | /order/by-customer/{customerId} | Hae tilaukset asiakkaan ID:n avulla|
 | DELETE | /order/clearcancelled           | Poista kaikki peruutetut tilaukset |
 | PATCH  | /order/{id}/status              | Päivitä tilauksen status tilaa     |
+---
+## Tilauslokit (`/orderlogs`)
+| Metodi | Polku                           | Kuvaus                          |
+|--------|----------------------------------|---------------------------------|
+| GET    | /orderlogs                       | Listaa kaikki tilauslokit       |
+| GET    | /orderlogs/{id}                  | Hae lokimerkintä ID:llä         |
+| GET    | /orderlogs/by-order/{orderId}    | Hae lokit tilauksen ID:llä      |
+| GET    | /orderlogs/by-customer/{customerId} | Hae lokit asiakkaan ID:llä   |
   
-
+---
 ## Asiakas (`/customer`)
 | Metodi | Polku                | Kuvaus                              |
 |--------|----------------------|-------------------------------------|
