@@ -22,6 +22,7 @@ Käytettävissä olevat endpointit:
 | Metodi | Polku                | Kuvaus                                      |
 |--------|----------------------|---------------------------------------------|
 | DELETE | /outofstock/cleanup  | Siivoa OutOfStock-taulu (poistaa saatavilla olevat tuotteet) |
+| GET | /outofstock | Hae kaikki tuotteet joiden varastosaldo on 0 |
 
 ---
 
