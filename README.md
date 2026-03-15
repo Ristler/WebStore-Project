@@ -50,7 +50,15 @@ Käytettävissä olevat endpointit:
 | PUT    | /customeraddresses/by-customer/{customerId}   | Päivitä osoite asiakkaan ID:llä     |
 
 ---
-
+## Toimittajaosoitteet (`/supplieraddresses`)
+| Metodi | Polku                                           | Kuvaus                                |
+|--------|--------------------------------------------------|---------------------------------------|
+| GET    | /supplieraddresses/                              | Listaa kaikki toimittajaosoitteet     |
+| GET    | /supplieraddresses/{id}                          | Hae toimittajaosoite ID:llä           |
+| POST   | /supplieraddresses                               | Luo osoite toimittajalle              |
+| GET    | /supplieraddresses/by-supplier/{supplierId}      | Hae osoite toimittajan ID:llä         |
+| PUT    | /supplieraddresses/by-supplier/{supplierId}      | Päivitä osoite toimittajan ID:llä     |
+---
 ## Toimittaja (`/supplier`)
 | Metodi | Polku                | Kuvaus                              |
 |--------|----------------------|-------------------------------------|
@@ -283,7 +291,44 @@ Käytettävissä olevat endpointit:
 
 
 ## Asiakas
-#### Luo uusi asiakas (POST /customer)
+
+### GET /customer
+
+**Pyyntö:**
+```json
+{}
+```
+**Vastaus:**
+```json
+[
+  {
+    "id": 1,
+    "phone": "0401234567",
+    "email": "matti.meikalainen@example.com",
+    "first_name": "Matti",
+    "last_name": "Meikäläinen"
+  }
+]
+```
+
+### GET /customer/{id}
+
+**Pyyntö:**
+```json
+{}
+```
+**Vastaus:**
+```json
+{
+  "id": 1,
+  "phone": "0401234567",
+  "email": "matti.meikalainen@example.com",
+  "first_name": "Matti",
+  "last_name": "Meikäläinen"
+}
+```
+
+### POST /customer
 
 **Pyyntö:**
 ```json
@@ -304,10 +349,366 @@ Käytettävissä olevat endpointit:
   "id": 1,
   "first_name": "Matti",
   "last_name": "Meikäläinen",
+  "phone": "0401234567",
+  "email": "matti.meikalainen@example.com"
+}
+```
+
+### PUT /customer/{id}
+
+**Pyyntö:**
+```json
+{
+  "first_name": "Matti",
+  "last_name": "Meikäläinen",
   "phone": "0407654321",
   "email": "matti.uusi@example.com"
 }
 ```
+**Vastaus:**
+```json
+{
+  "id": 1,
+  "first_name": "Matti",
+  "last_name": "Meikäläinen",
+  "phone": "0407654321",
+  "email": "matti.uusi@example.com"
+}
+```
+
+### DELETE /customer/{id}
+
+**Pyyntö:**
+```json
+{}
+```
+**Vastaus:**
+```json
+{}
+```
+
+## Asiakasosoitteet
+
+### POST /customeraddresses?customerId={customerId}
+
+**Pyyntö:**
+```json
+{
+  "streetAddress": "Katu 1",
+  "postalCode": "00100",
+  "city": "Helsinki",
+  "country": "Suomi"
+}
+```
+**Vastaus:**
+```json
+{
+  "id": 1,
+  "street_address": "Katu 1",
+  "postal_code": "00100",
+  "city": "Helsinki",
+  "country": "Suomi"
+}
+```
+
+### GET /customeraddresses/{id}
+
+**Pyyntö:**
+```json
+{}
+```
+**Vastaus:**
+```json
+{
+  "id": 1,
+  "street_address": "Katu 1",
+  "postal_code": "00100",
+  "city": "Helsinki",
+  "country": "Suomi"
+}
+```
+
+### GET /customeraddresses/by-customer/{customerId}
+
+**Pyyntö:**
+```json
+{}
+```
+**Vastaus:**
+```json
+{
+  "id": 1,
+  "street_address": "Katu 1",
+  "postal_code": "00100",
+  "city": "Helsinki",
+  "country": "Suomi"
+}
+```
+
+### PUT /customeraddresses/{id}
+
+**Pyyntö:**
+```json
+{
+  "streetAddress": "Katu 2",
+  "postalCode": "00100",
+  "city": "Helsinki",
+  "country": "Suomi"
+}
+```
+**Vastaus:**
+```json
+{
+  "id": 1,
+  "street_address": "Katu 2",
+  "postal_code": "00100",
+  "city": "Helsinki",
+  "country": "Suomi"
+}
+```
+
+### PUT /customeraddresses/by-customer/{customerId}
+
+**Pyyntö:**
+```json
+{
+  "streetAddress": "Katu 2",
+  "postalCode": "00100",
+  "city": "Helsinki",
+  "country": "Suomi"
+}
+```
+**Vastaus:**
+```json
+{
+  "id": 1,
+  "street_address": "Katu 2",
+  "postal_code": "00100",
+  "city": "Helsinki",
+  "country": "Suomi"
+}
+```
+
+### DELETE /customeraddresses/{id}
+
+**Pyyntö:**
+```json
+{}
+```
+
+---
+## Toimittaja
+
+### GET /supplier
+
+**Pyyntö:**
+```json
+{}
+```
+**Vastaus:**
+```json
+[
+  {
+    "id": 1,
+    "phone": "0501234567",
+    "email": "teppo@testioy.fi",
+    "name": "Testi Oy",
+    "contact_name": "Teppo Toimittaja"
+  }
+]
+```
+
+### GET /supplier/{id}
+
+**Pyyntö:**
+```json
+{}
+```
+**Vastaus:**
+```json
+{
+  "id": 1,
+  "phone": "0501234567",
+  "email": "teppo@testioy.fi",
+  "name": "Testi Oy",
+  "contact_name": "Teppo Toimittaja"
+}
+```
+
+### POST /supplier
+
+**Pyyntö:**
+```json
+{
+  "name": "Testi Oy",
+  "contactName": "Teppo Toimittaja",
+  "phone": "0501234567",
+  "email": "teppo@testioy.fi",
+  "streetAddress": "Tehtaankatu 2",
+  "postalCode": "20100",
+  "city": "Turku",
+  "country": "Suomi"
+}
+```
+**Vastaus:**
+```json
+{
+  "id": 1,
+  "name": "Testi Oy",
+  "contact_name": "Teppo Toimittaja",
+  "phone": "0501234567",
+  "email": "teppo@testioy.fi"
+}
+```
+
+### PUT /supplier/{id}
+
+**Pyyntö:**
+```json
+{
+  "name": "Testi Oy",
+  "contact_name": "Teppo T. Toimittaja",
+  "phone": "0507654321",
+  "email": "teppo.uusi@testioy.fi"
+}
+```
+**Vastaus:**
+```json
+{
+  "id": 1,
+  "name": "Testi Oy",
+  "contact_name": "Teppo T. Toimittaja",
+  "phone": "0507654321",
+  "email": "teppo.uusi@testioy.fi"
+}
+```
+
+### DELETE /supplier/{id}
+
+**Pyyntö:**
+```json
+{}
+```
+**Vastaus:**
+```json
+{}
+```
+
+---
+## Toimittajaosoitteet
+
+### GET /supplieraddresses/
+
+**Pyyntö:**
+```json
+{}
+```
+**Vastaus:**
+```json
+[
+  {
+    "id": 1,
+    "street_address": "Tehtaankatu 2",
+    "postal_code": "20100",
+    "city": "Turku",
+    "country": "Suomi"
+  }
+]
+```
+
+### GET /supplieraddresses/{id}
+
+**Pyyntö:**
+```json
+{}
+```
+**Vastaus:**
+```json
+{
+  "id": 1,
+  "street_address": "Tehtaankatu 2",
+  "postal_code": "20100",
+  "city": "Turku",
+  "country": "Suomi"
+}
+```
+
+### POST /supplieraddresses?supplierId={supplierId}
+
+**Pyyntö:**
+```json
+{
+  "streetAddress": "Tehtaankatu 2",
+  "postalCode": "20100",
+  "city": "Turku",
+  "country": "Suomi"
+}
+```
+**Vastaus:**
+```json
+{
+  "id": 1,
+  "street_address": "Tehtaankatu 2",
+  "postal_code": "20100",
+  "city": "Turku",
+  "country": "Suomi"
+}
+```
+
+### GET /supplieraddresses/by-supplier/{supplierId}
+
+**Pyyntö:**
+```json
+{}
+```
+**Vastaus:**
+```json
+{
+  "id": 1,
+  "street_address": "Tehtaankatu 2",
+  "postal_code": "20100",
+  "city": "Turku",
+  "country": "Suomi"
+}
+```
+
+### PUT /supplieraddresses/by-supplier/{supplierId}
+
+**Pyyntö:**
+```json
+{
+  "streetAddress": "Tehtaankatu 3",
+  "postalCode": "20100",
+  "city": "Turku",
+  "country": "Suomi"
+}
+```
+**Vastaus:**
+```json
+{
+  "id": 1,
+  "street_address": "Tehtaankatu 3",
+  "postal_code": "20100",
+  "city": "Turku",
+  "country": "Suomi"
+}
+```
+
+---
+## Loppu varastosta
+
+### DELETE /outofstock/cleanup
+
+**Pyyntö:**
+```json
+{}
+```
+**Vastaus:**
+```json
+"OutOfStock table cleaned! Products with stock are removed."
+```
+
+
 
 
 
