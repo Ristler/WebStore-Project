@@ -14,6 +14,12 @@ Käytettävissä olevat endpointit:
 | DELETE | /product/{id}         | Poists tuote ID:n avulla   |
 
 ---
+## Varasto loppu (OutOfStock) (`/outofstock`)
+| Metodi | Polku                | Kuvaus                                      |
+|--------|----------------------|---------------------------------------------|
+| DELETE | /outofstock/cleanup  | Siivoa OutOfStock-taulu (poistaa saatavilla olevat tuotteet) |
+
+---
 
 ## Tilaus (`/order`)
 | Methodi | Polku                     | Kuvaus                             |
