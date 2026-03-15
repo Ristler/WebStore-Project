@@ -718,6 +718,33 @@ Käytettävissä olevat endpointit:
 ```json
 "OutOfStock table cleaned! Products with stock are removed."
 ```
+### GET /outofstock
+
+**Pyyntö:**
+```json
+{}
+```
+**Vastaus:**
+```json
+[
+    {
+        "categoryId": 3,
+        "id": 161,
+        "priceEach": 60.47,
+        "product": {
+            "name": "Swift Shield 686",
+            "description": "Worry shoulder level garden admit.",
+            "price": 60.47,
+            "stock_quantity": 0,
+            "category_id": 3,
+            "supplier_id": 53,
+            "hibernateLazyInitializer": {}
+        },
+        "productName": "Swift Shield 686",
+        "supplierId": 53
+    }
+[
+```
 
 
 
