@@ -74,10 +74,11 @@ Käytettävissä olevat endpointit:
   "city": "Helsinki",
   "country": "Suomi"
 }
-
+```
 Koodi on refaktoroitu paketteihin:
 * Entity
 * Controller
 * Repositories
 * Service
 * DTO
+
