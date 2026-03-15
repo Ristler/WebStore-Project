@@ -7,6 +7,8 @@ import fi.metropolia.danielju.webstore.service.CustomerService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
@@ -29,5 +31,30 @@ public class CustomerController {
     public ResponseEntity<Customer> createCustomerWithAddress(@RequestBody CustomerWithAddressDTO dto) {
         Customer created = customerService.createCustomerWithAddress(dto);
         return ResponseEntity.ok(created);
+    }
+
+    @GetMapping
+    public List<Customer> getAllCustomers() {
+        return customerService.getAllCustomers();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Customer> getCustomerById(@PathVariable int id) {
+        Customer customer = customerService.getCustomerById(id);
+        if (customer != null) {
+            return ResponseEntity.ok(customer);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteCustomer(@PathVariable int id) {
+        boolean deleted = customerService.deleteCustomer(id);
+        if (deleted) {
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

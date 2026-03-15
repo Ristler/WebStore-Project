@@ -7,13 +7,7 @@ import fi.metropolia.danielju.webstore.repositories.SupplierAddressesRepository;
 import fi.metropolia.danielju.webstore.repositories.SupplierRepository;
 import fi.metropolia.danielju.webstore.service.SupplierService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import jakarta.transaction.Transactional;
 import java.util.List;
@@ -32,7 +26,6 @@ public class SupplierController {
         this.supplierAddressesRepository = supplierAddressesRepository;
         this.supplierService = supplierService;
     }
-
 
 
     @DeleteMapping("/{id}")
@@ -57,5 +50,30 @@ public class SupplierController {
     public ResponseEntity<Supplier> createSupplierWithAddress(@RequestBody SupplierWithAddressDTO dto) {
         Supplier created = supplierService.createSupplierWithAddress(dto);
         return ResponseEntity.ok(created);
+    }
+
+    @GetMapping
+    public List<Supplier> getAllSuppliers() {
+        return supplierService.getAllSuppliers();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Supplier> getSupplierById(@PathVariable int id) {
+        Supplier supplier = supplierService.getSupplierById(id);
+        if (supplier != null) {
+            return ResponseEntity.ok(supplier);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Supplier> updateSupplier(@PathVariable int id, @RequestBody Supplier updatedSupplier) {
+        try {
+            Supplier supplier = supplierService.updateSupplier(id, updatedSupplier);
+            return ResponseEntity.ok(supplier);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

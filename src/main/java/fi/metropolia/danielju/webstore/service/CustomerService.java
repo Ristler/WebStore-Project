@@ -76,4 +76,21 @@ public class CustomerService {
         customerAddressesRepository.save(address);
         return savedCustomer;
     }
+
+    public List<Customer> getAllCustomers() {
+        return repository.findAll();
+    }
+
+    public Customer getCustomerById(int id) {
+        return repository.findById(id).orElse(null);
+    }
+
+    @Transactional
+    public boolean deleteCustomer(int id) {
+        if (repository.existsById(id)) {
+            repository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
 }

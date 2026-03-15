@@ -1,5 +1,6 @@
 package fi.metropolia.danielju.webstore.controller;
 
+import fi.metropolia.danielju.webstore.dto.OrderStatusUpdateDTO;
 import fi.metropolia.danielju.webstore.entity.Order;
 import fi.metropolia.danielju.webstore.repositories.OrderRepository;
 import fi.metropolia.danielju.webstore.service.OrderService;
@@ -32,14 +33,45 @@ public class OrderController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/post")
+    @PostMapping
     public ResponseEntity<Order> createOrder(@RequestBody Order order) {
         Order savedOrder = repository.save(order);
         return ResponseEntity.ok(savedOrder);
     }
 
+
+
     @DeleteMapping("/clearcancelled")
     public String deleteCancelledOrders() {
         return orderService.deleteCancelledOrdersAndItems();
+    }
+
+    @PatchMapping("/{id}/status")
+    public ResponseEntity<Order> updateOrderStatus(@PathVariable int id, @RequestBody OrderStatusUpdateDTO dto) {
+        return orderService.updateOrderStatus(id, dto.status)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Order> updateOrder(@PathVariable Integer id, @RequestBody Order updatedOrder) {
+        return orderService.updateOrder(id, updatedOrder)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteOrder(@PathVariable Integer id) {
+        boolean deleted = orderService.deleteOrder(id);
+        if (deleted) {
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/by-customer/{customerId}")
+    public List<Order> getOrdersByCustomerId(@PathVariable Integer customerId) {
+        return orderService.getOrdersByCustomerId(customerId);
     }
 }

@@ -33,4 +33,7 @@ public interface OrderRepository extends JpaRepository<Order, Integer> {
 
     // Find orders by shipping address id
     List<Order> findByShippingAddressId(int shippingAddressId);
+
+    // Find orders by customer id
+    List<Order> findByCustomerId(Integer customerId);
 }
