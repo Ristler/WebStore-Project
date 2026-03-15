@@ -1,20 +1,17 @@
 package fi.metropolia.danielju.webstore.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "supplieraddresses")
-public class SupplierAddresses {
-
+@Table(name = "customeraddresses")
+public class CustomerAddresses {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @JsonBackReference
-    @OneToOne(optional = false)
-    @JoinColumn(name = "supplier_id", unique = true)
-    private Supplier supplier;
+    @OneToOne(optional = true)
+    @JoinColumn(name = "customer_id", unique = true)
+    private Customer customer;
 
     @Column(name = "street_address")
     private String streetAddress;
@@ -28,19 +25,30 @@ public class SupplierAddresses {
     @Column(name = "country")
     private String country;
 
-    public SupplierAddresses() {}
+    // No-argument constructor
+    public CustomerAddresses() {
+    }
 
-    public SupplierAddresses(Supplier supplier, String streetAddress,
-                             String postalCode, String city, String country) {
-        this.supplier = supplier;
+    // All-arguments constructor (including id)
+    public CustomerAddresses(int id, Customer customer, String streetAddress, String postalCode, String city, String country) {
+        this.id = id;
+        this.customer = customer;
         this.streetAddress = streetAddress;
         this.postalCode = postalCode;
         this.city = city;
         this.country = country;
     }
 
-    // getters & setters
+    // Constructor without id (for creating new instances before persistence)
+    public CustomerAddresses(Customer customer, String streetAddress, String postalCode, String city, String country) {
+        this.customer = customer;
+        this.streetAddress = streetAddress;
+        this.postalCode = postalCode;
+        this.city = city;
+        this.country = country;
+    }
 
+    // Getters and setters
     public int getId() {
         return id;
     }
@@ -49,12 +57,12 @@ public class SupplierAddresses {
         this.id = id;
     }
 
-    public Supplier getSupplier() {
-        return supplier;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setSupplier(Supplier supplier) {
-        this.supplier = supplier;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public String getStreetAddress() {
@@ -91,13 +99,14 @@ public class SupplierAddresses {
 
     @Override
     public String toString() {
-        return "SupplierAddresses{" +
+        return "CustomerAddresses{" +
                 "id=" + id +
-                ", supplierId=" + (supplier != null ? supplier.getId() : null) +
+                ", customerId=" + (customer != null ? customer.getId() : null) +
                 ", streetAddress='" + streetAddress + '\'' +
                 ", postalCode='" + postalCode + '\'' +
                 ", city='" + city + '\'' +
                 ", country='" + country + '\'' +
                 '}';
     }
+
 }
