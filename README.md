@@ -31,7 +31,7 @@ Käytettävissä olevat endpointit:
 |--------|---------------------------------|------------------------------------|
 | GET    | /order/                         | Näytä kaikki tilaukset             |
 | GET    | /order/{id}                     | Hae tilaus ID:n perusteella        |
-| POST   | /order/post                     | Luo uusi tilaus                    |
+| POST   | /order                    | Luo uusi tilaus                    |
 | PUT    | /order/{id}                     | Päivitä tilaus ID:n avulla         |
 | DELETE | /order/{id}                     | Poista tilaus ID:n avulla          |
 | GET    | /order/by-customer/{customerId} | Hae tilaukset asiakkaan ID:n avulla|
